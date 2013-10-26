@@ -27,4 +27,6 @@
 
 @property (strong, nonatomic) CMMotionManager *motionManager;
 
+@property SKEmitterNode *smokeTrail;
+
 @end

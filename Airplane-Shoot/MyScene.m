@@ -10,7 +10,7 @@
 
 @implementation MyScene
 
--(id)initWithSize:(CGSize)size {    
+-(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         //init several sizes used in all scene
         screenRect = [[UIScreen mainScreen] bounds];
@@ -50,7 +50,7 @@
         //CoreMotion
         self.motionManager = [[CMMotionManager alloc] init];
         self.motionManager.accelerometerUpdateInterval = .2;
-//        self.motionManager.gyroUpdateInterval = .2;
+        //        self.motionManager.gyroUpdateInterval = .2;
         
         [self.motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue currentQueue]
                                                  withHandler:^(CMAccelerometerData  *accelerometerData, NSError *error) {
@@ -60,10 +60,63 @@
                                                          NSLog(@"%@", error);
                                                      }
                                                  }];
-
-
+        
+        //adding the smokeTrail
+        NSString *smokePath = [[NSBundle mainBundle] pathForResource:@"trail" ofType:@"sks"];
+        _smokeTrail = [NSKeyedUnarchiver unarchiveObjectWithFile:smokePath];
+        _smokeTrail.position = CGPointMake(screenWidth/2, 15);
+        [self addChild:_smokeTrail];
+        
+        //schedule enemies
+        SKAction *wait = [SKAction waitForDuration:1];
+        SKAction *callEnemies = [SKAction runBlock:^{
+            [self EnemiesAndClouds];
+        }];
+        SKAction *updateEnimies = [SKAction sequence:@[wait,callEnemies]];
+        [self runAction:[SKAction repeatActionForever:updateEnimies]];
+        
     }
     return self;
+}
+
+-(void)EnemiesAndClouds{
+    //not always come
+    int GoOrNot = [self getRandomNumberBetween:0 to:1];
+    if(GoOrNot == 1){
+        SKSpriteNode *enemy;
+        int randomEnemy = [self getRandomNumberBetween:0 to:1];
+        if(randomEnemy == 0)
+            enemy = [SKSpriteNode spriteNodeWithImageNamed:@"PLANE 1 N.png"];
+        else
+            enemy = [SKSpriteNode spriteNodeWithImageNamed:@"PLANE 2 N.png"];
+        enemy.scale = 0.6;
+        enemy.position = CGPointMake(screenRect.size.width/2, screenRect.size.height/2);
+        enemy.zPosition = 1;
+        CGMutablePathRef cgpath = CGPathCreateMutable();
+        //random values
+        float xStart = [self getRandomNumberBetween:0+enemy.size.width to:screenRect.size.width-enemy.size.width ];
+        float xEnd = [self getRandomNumberBetween:0+enemy.size.width to:screenRect.size.width-enemy.size.width ];
+        //ControlPoint1
+        float cp1X = [self getRandomNumberBetween:0+enemy.size.width to:screenRect.size.width-enemy.size.width ];
+        float cp1Y = [self getRandomNumberBetween:0+enemy.size.width to:screenRect.size.width-enemy.size.height ];
+        //ControlPoint2
+        float cp2X = [self getRandomNumberBetween:0+enemy.size.width to:screenRect.size.width-enemy.size.width ];
+        float cp2Y = [self getRandomNumberBetween:0 to:cp1Y];
+        CGPoint s = CGPointMake(xStart, 1024.0);
+        CGPoint e = CGPointMake(xEnd, -100.0);
+        CGPoint cp1 = CGPointMake(cp1X, cp1Y);
+        CGPoint cp2 = CGPointMake(cp2X, cp2Y);
+        CGPathMoveToPoint(cgpath,NULL, s.x, s.y);
+        CGPathAddCurveToPoint(cgpath, NULL, cp1.x, cp1.y, cp2.x, cp2.y, e.x, e.y);
+        SKAction *planeDestroy = [SKAction followPath:cgpath asOffset:NO orientToPath:YES duration:5];
+        [self addChild:enemy];
+        SKAction *remove = [SKAction removeFromParent];
+        [enemy runAction:[SKAction sequence:@[planeDestroy,remove]]];
+        CGPathRelease(cgpath);
+    }
+}
+-(int)getRandomNumberBetween:(int)from to:(int)to {
+    return (int)from + arc4random() % (to-from+1);
 }
 
 -(void)outputAccelertionData:(CMAcceleration)acceleration
@@ -87,19 +140,32 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     
-    for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
-        
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-        
-        sprite.position = location;
-        
-        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-        
-        [sprite runAction:[SKAction repeatActionForever:action]];
-        
-        [self addChild:sprite];
-    }
+//    for (UITouch *touch in touches) {
+//        CGPoint location = [touch locationInNode:self];
+//        
+//        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
+//        
+//        sprite.position = location;
+//        
+//        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
+//        
+//        [sprite runAction:[SKAction repeatActionForever:action]];
+//        
+//        [self addChild:sprite];
+//    }
+    
+    /* Called when a touch begins */
+    CGPoint location = [_plane position];
+    SKSpriteNode *bullet = [SKSpriteNode spriteNodeWithImageNamed:@"B 2.png"];
+    bullet.position = CGPointMake(location.x,location.y+_plane.size.height/2);
+    //bullet.position = location;
+    bullet.zPosition = 1;
+    bullet.scale = 0.8;
+    SKAction *action = [SKAction moveToY:self.frame.size.height+bullet.size.height duration:2];
+    SKAction *remove = [SKAction removeFromParent];
+    [bullet runAction:[SKAction sequence:@[action,remove]]];
+    [self addChild:bullet];
+
 }
 
 -(void)update:(NSTimeInterval)currentTime{
@@ -151,6 +217,8 @@
     _planeShadow.position = CGPointMake(newXshadow, newYshadow);
     _propeller.position = CGPointMake(newXpropeller, newYpropeller);
     //_smokeTrail.position = CGPointMake(newX,newY-(_plane.size.height/2));
+    _smokeTrail.position = CGPointMake(newX,newY-(_plane.size.height/2));
+    
 }
 
 
