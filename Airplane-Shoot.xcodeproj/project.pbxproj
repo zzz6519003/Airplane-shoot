@@ -31,6 +31,7 @@
 		1848EF19181B78DD0024AF6E /* PLANE 8 SHADOW.png in Resources */ = {isa = PBXBuildFile; fileRef = 1848EF12181B78DD0024AF6E /* PLANE 8 SHADOW.png */; };
 		1848EF1A181B78DD0024AF6E /* PLANE PROPELLER 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1848EF13181B78DD0024AF6E /* PLANE PROPELLER 1.png */; };
 		1848EF1B181B78DD0024AF6E /* PLANE PROPELLER 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1848EF14181B78DD0024AF6E /* PLANE PROPELLER 2.png */; };
+		1848EF1E181BBE570024AF6E /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1848EF1D181BBE570024AF6E /* CoreMotion.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		1848EF12181B78DD0024AF6E /* PLANE 8 SHADOW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLANE 8 SHADOW.png"; sourceTree = "<group>"; };
 		1848EF13181B78DD0024AF6E /* PLANE PROPELLER 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLANE PROPELLER 1.png"; sourceTree = "<group>"; };
 		1848EF14181B78DD0024AF6E /* PLANE PROPELLER 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLANE PROPELLER 2.png"; sourceTree = "<group>"; };
+		1848EF1D181BBE570024AF6E /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1848EF1E181BBE570024AF6E /* CoreMotion.framework in Frameworks */,
 				1848EED5181B779E0024AF6E /* CoreGraphics.framework in Frameworks */,
 				1848EED7181B779E0024AF6E /* UIKit.framework in Frameworks */,
 				1848EED9181B779E0024AF6E /* SpriteKit.framework in Frameworks */,
@@ -123,6 +126,7 @@
 		1848EED1181B779E0024AF6E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1848EF1D181BBE570024AF6E /* CoreMotion.framework */,
 				1848EED2181B779E0024AF6E /* Foundation.framework */,
 				1848EED4181B779E0024AF6E /* CoreGraphics.framework */,
 				1848EED6181B779E0024AF6E /* UIKit.framework */,
@@ -135,6 +139,7 @@
 		1848EEDA181B779E0024AF6E /* Airplane-Shoot */ = {
 			isa = PBXGroup;
 			children = (
+				1848EF1C181BB4DD0024AF6E /* iPad */,
 				1848EF0E181B78DD0024AF6E /* airPlanesBackground.png */,
 				1848EF0F181B78DD0024AF6E /* PLANE 8 L.png */,
 				1848EF10181B78DD0024AF6E /* PLANE 8 N.png */,
@@ -185,6 +190,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		1848EF1C181BB4DD0024AF6E /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -232,6 +244,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = zzz;
 				TargetAttributes = {
+					1848EECE181B779E0024AF6E = {
+						DevelopmentTeam = YU645886QH;
+					};
 					1848EEF6181B779F0024AF6E = {
 						TestTargetID = 1848EECE181B779E0024AF6E;
 					};
@@ -422,11 +437,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Airplane-Shoot/Airplane-Shoot-Prefix.pch";
 				INFOPLIST_FILE = "Airplane-Shoot/Airplane-Shoot-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -436,11 +456,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Airplane-Shoot/Airplane-Shoot-Prefix.pch";
 				INFOPLIST_FILE = "Airplane-Shoot/Airplane-Shoot-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
