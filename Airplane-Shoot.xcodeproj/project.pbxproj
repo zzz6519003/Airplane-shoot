@@ -24,6 +24,13 @@
 		1848EEFB181B779F0024AF6E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1848EED6181B779E0024AF6E /* UIKit.framework */; };
 		1848EF03181B779F0024AF6E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1848EF01181B779F0024AF6E /* InfoPlist.strings */; };
 		1848EF05181B779F0024AF6E /* Airplane_ShootTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1848EF04181B779F0024AF6E /* Airplane_ShootTests.m */; };
+		1848EF15181B78DD0024AF6E /* airPlanesBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 1848EF0E181B78DD0024AF6E /* airPlanesBackground.png */; };
+		1848EF16181B78DD0024AF6E /* PLANE 8 L.png in Resources */ = {isa = PBXBuildFile; fileRef = 1848EF0F181B78DD0024AF6E /* PLANE 8 L.png */; };
+		1848EF17181B78DD0024AF6E /* PLANE 8 N.png in Resources */ = {isa = PBXBuildFile; fileRef = 1848EF10181B78DD0024AF6E /* PLANE 8 N.png */; };
+		1848EF18181B78DD0024AF6E /* PLANE 8 R.png in Resources */ = {isa = PBXBuildFile; fileRef = 1848EF11181B78DD0024AF6E /* PLANE 8 R.png */; };
+		1848EF19181B78DD0024AF6E /* PLANE 8 SHADOW.png in Resources */ = {isa = PBXBuildFile; fileRef = 1848EF12181B78DD0024AF6E /* PLANE 8 SHADOW.png */; };
+		1848EF1A181B78DD0024AF6E /* PLANE PROPELLER 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1848EF13181B78DD0024AF6E /* PLANE PROPELLER 1.png */; };
+		1848EF1B181B78DD0024AF6E /* PLANE PROPELLER 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1848EF14181B78DD0024AF6E /* PLANE PROPELLER 2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +67,13 @@
 		1848EF00181B779F0024AF6E /* Airplane-ShootTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Airplane-ShootTests-Info.plist"; sourceTree = "<group>"; };
 		1848EF02181B779F0024AF6E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1848EF04181B779F0024AF6E /* Airplane_ShootTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Airplane_ShootTests.m; sourceTree = "<group>"; };
+		1848EF0E181B78DD0024AF6E /* airPlanesBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = airPlanesBackground.png; sourceTree = "<group>"; };
+		1848EF0F181B78DD0024AF6E /* PLANE 8 L.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLANE 8 L.png"; sourceTree = "<group>"; };
+		1848EF10181B78DD0024AF6E /* PLANE 8 N.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLANE 8 N.png"; sourceTree = "<group>"; };
+		1848EF11181B78DD0024AF6E /* PLANE 8 R.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLANE 8 R.png"; sourceTree = "<group>"; };
+		1848EF12181B78DD0024AF6E /* PLANE 8 SHADOW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLANE 8 SHADOW.png"; sourceTree = "<group>"; };
+		1848EF13181B78DD0024AF6E /* PLANE PROPELLER 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLANE PROPELLER 1.png"; sourceTree = "<group>"; };
+		1848EF14181B78DD0024AF6E /* PLANE PROPELLER 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLANE PROPELLER 2.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +135,13 @@
 		1848EEDA181B779E0024AF6E /* Airplane-Shoot */ = {
 			isa = PBXGroup;
 			children = (
+				1848EF0E181B78DD0024AF6E /* airPlanesBackground.png */,
+				1848EF0F181B78DD0024AF6E /* PLANE 8 L.png */,
+				1848EF10181B78DD0024AF6E /* PLANE 8 N.png */,
+				1848EF11181B78DD0024AF6E /* PLANE 8 R.png */,
+				1848EF12181B78DD0024AF6E /* PLANE 8 SHADOW.png */,
+				1848EF13181B78DD0024AF6E /* PLANE PROPELLER 1.png */,
+				1848EF14181B78DD0024AF6E /* PLANE PROPELLER 2.png */,
 				1848EEE3181B779E0024AF6E /* AppDelegate.h */,
 				1848EEE4181B779E0024AF6E /* AppDelegate.m */,
 				1848EEE6181B779E0024AF6E /* Main.storyboard */,
@@ -240,8 +261,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1848EF16181B78DD0024AF6E /* PLANE 8 L.png in Resources */,
+				1848EF19181B78DD0024AF6E /* PLANE 8 SHADOW.png in Resources */,
 				1848EEDF181B779E0024AF6E /* InfoPlist.strings in Resources */,
+				1848EF18181B78DD0024AF6E /* PLANE 8 R.png in Resources */,
+				1848EF1A181B78DD0024AF6E /* PLANE PROPELLER 1.png in Resources */,
 				1848EEF2181B779F0024AF6E /* Images.xcassets in Resources */,
+				1848EF15181B78DD0024AF6E /* airPlanesBackground.png in Resources */,
+				1848EF17181B78DD0024AF6E /* PLANE 8 N.png in Resources */,
+				1848EF1B181B78DD0024AF6E /* PLANE PROPELLER 2.png in Resources */,
 				1848EEF0181B779F0024AF6E /* Spaceship.png in Resources */,
 				1848EEE8181B779E0024AF6E /* Main.storyboard in Resources */,
 			);
