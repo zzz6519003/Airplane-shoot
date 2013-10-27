@@ -126,10 +126,11 @@
         CGPoint cp2 = CGPointMake(cp2X, cp2Y);
         CGPathMoveToPoint(cgpath,NULL, s.x, s.y);
         CGPathAddCurveToPoint(cgpath, NULL, cp1.x, cp1.y, cp2.x, cp2.y, e.x, e.y);
-        SKAction *planeDestroy = [SKAction followPath:cgpath asOffset:NO orientToPath:YES duration:5];
+//        SKAction *planeDestroy = [SKAction followPath:cgpath asOffset:NO orientToPath:YES duration:5];
         [self addChild:enemy];
         SKAction *remove = [SKAction removeFromParent];
-        [enemy runAction:[SKAction sequence:@[planeDestroy,remove]]];
+//        [enemy runAction:[SKAction sequence:@[planeDestroy,remove]]];
+        [enemy runAction:[SKAction sequence:@[remove]]];
         CGPathRelease(cgpath);
         
         

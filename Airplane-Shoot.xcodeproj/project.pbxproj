@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18247A3E181D589600D31DD2 /* SMOKE TRAIL.png in Resources */ = {isa = PBXBuildFile; fileRef = 18247A3D181D589600D31DD2 /* SMOKE TRAIL.png */; };
+		18247A40181D589600D31DD2 /* B 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 18247A3F181D589600D31DD2 /* B 2.png */; };
+		18247A43181D589600D31DD2 /* PLANE 1 N.png in Resources */ = {isa = PBXBuildFile; fileRef = 18247A41181D589600D31DD2 /* PLANE 1 N.png */; };
+		18247A44181D589600D31DD2 /* PLANE 2 N.png in Resources */ = {isa = PBXBuildFile; fileRef = 18247A42181D589600D31DD2 /* PLANE 2 N.png */; };
 		1848EED3181B779E0024AF6E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1848EED2181B779E0024AF6E /* Foundation.framework */; };
 		1848EED5181B779E0024AF6E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1848EED4181B779E0024AF6E /* CoreGraphics.framework */; };
 		1848EED7181B779E0024AF6E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1848EED6181B779E0024AF6E /* UIKit.framework */; };
@@ -49,6 +53,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18247A3D181D589600D31DD2 /* SMOKE TRAIL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SMOKE TRAIL.png"; sourceTree = "<group>"; };
+		18247A3F181D589600D31DD2 /* B 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "B 2.png"; sourceTree = "<group>"; };
+		18247A41181D589600D31DD2 /* PLANE 1 N.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLANE 1 N.png"; sourceTree = "<group>"; };
+		18247A42181D589600D31DD2 /* PLANE 2 N.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLANE 2 N.png"; sourceTree = "<group>"; };
 		1848EECF181B779E0024AF6E /* Airplane-Shoot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Airplane-Shoot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1848EED2181B779E0024AF6E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1848EED4181B779E0024AF6E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -149,12 +157,16 @@
 			children = (
 				1848EF1C181BB4DD0024AF6E /* iPad */,
 				1848EF0E181B78DD0024AF6E /* airPlanesBackground.png */,
+				18247A41181D589600D31DD2 /* PLANE 1 N.png */,
+				18247A42181D589600D31DD2 /* PLANE 2 N.png */,
 				1848EF0F181B78DD0024AF6E /* PLANE 8 L.png */,
 				1848EF10181B78DD0024AF6E /* PLANE 8 N.png */,
 				1848EF11181B78DD0024AF6E /* PLANE 8 R.png */,
 				1848EF12181B78DD0024AF6E /* PLANE 8 SHADOW.png */,
 				1848EF13181B78DD0024AF6E /* PLANE PROPELLER 1.png */,
 				1848EF14181B78DD0024AF6E /* PLANE PROPELLER 2.png */,
+				18247A3D181D589600D31DD2 /* SMOKE TRAIL.png */,
+				18247A3F181D589600D31DD2 /* B 2.png */,
 				1848EEE3181B779E0024AF6E /* AppDelegate.h */,
 				1848EEE4181B779E0024AF6E /* AppDelegate.m */,
 				1848EEE6181B779E0024AF6E /* Main.storyboard */,
@@ -289,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1848EF16181B78DD0024AF6E /* PLANE 8 L.png in Resources */,
+				18247A43181D589600D31DD2 /* PLANE 1 N.png in Resources */,
 				1848EF19181B78DD0024AF6E /* PLANE 8 SHADOW.png in Resources */,
 				1848EEDF181B779E0024AF6E /* InfoPlist.strings in Resources */,
 				1848EF18181B78DD0024AF6E /* PLANE 8 R.png in Resources */,
@@ -301,6 +314,9 @@
 				18664B2D181CBC8100AB21EB /* EXPLOSION.atlas in Resources */,
 				18A5386B181C00FA006DE13A /* trail.sks in Resources */,
 				1848EF1B181B78DD0024AF6E /* PLANE PROPELLER 2.png in Resources */,
+				18247A40181D589600D31DD2 /* B 2.png in Resources */,
+				18247A44181D589600D31DD2 /* PLANE 2 N.png in Resources */,
+				18247A3E181D589600D31DD2 /* SMOKE TRAIL.png in Resources */,
 				1848EEF0181B779F0024AF6E /* Spaceship.png in Resources */,
 				1848EEE8181B779E0024AF6E /* Main.storyboard in Resources */,
 			);
