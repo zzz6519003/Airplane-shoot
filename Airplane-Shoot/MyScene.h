@@ -9,7 +9,8 @@
 #import <SpriteKit/SpriteKit.h>
 #import <CoreMotion/CoreMotion.h>
 
-@interface MyScene : SKScene {
+@interface MyScene : SKScene <UIAccelerometerDelegate, SKPhysicsContactDelegate>
+ {
     CGRect screenRect;
     CGFloat screenHeight;
     CGFloat screenWidth;
@@ -29,4 +30,12 @@
 
 @property SKEmitterNode *smokeTrail;
 
+@property NSMutableArray *explosionTextures;
+@property NSMutableArray *cloudsTextures;
+
+
 @end
+
+static const uint8_t bulletCategory = 1;
+static const uint8_t enemyCategory = 2;
+

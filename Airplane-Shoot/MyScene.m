@@ -75,6 +75,24 @@
         SKAction *updateEnimies = [SKAction sequence:@[wait,callEnemies]];
         [self runAction:[SKAction repeatActionForever:updateEnimies]];
         
+        
+        //load explosions
+        SKTextureAtlas *explosionAtlas = [SKTextureAtlas atlasNamed:@"EXPLOSION"];
+        NSArray *textureNames = [explosionAtlas textureNames];
+        _explosionTextures = [NSMutableArray new];
+        for (NSString *name in textureNames) {
+            SKTexture *texture = [explosionAtlas textureNamed:name];
+            [_explosionTextures addObject:texture];
+        }
+        //load clouds
+        SKTextureAtlas *cloudsAtlas = [SKTextureAtlas atlasNamed:@"Clouds"];
+        NSArray *textureNamesClouds = [cloudsAtlas textureNames];
+        _cloudsTextures = [NSMutableArray new];
+        for (NSString *name in textureNamesClouds) {
+            SKTexture *texture = [cloudsAtlas textureNamed:name];
+            [_cloudsTextures addObject:texture];
+        }
+        
     }
     return self;
 }
@@ -113,6 +131,33 @@
         SKAction *remove = [SKAction removeFromParent];
         [enemy runAction:[SKAction sequence:@[planeDestroy,remove]]];
         CGPathRelease(cgpath);
+        
+        
+        self.physicsWorld.gravity = CGVectorMake(0, 0);
+        self.physicsWorld.contactDelegate = self;
+        
+        
+        enemy.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:enemy.size];
+        enemy.physicsBody.dynamic = YES;
+        enemy.physicsBody.categoryBitMask = enemyCategory;
+        enemy.physicsBody.contactTestBitMask = bulletCategory;
+        enemy.physicsBody.collisionBitMask = 0;
+        
+        
+        //random Clouds
+        int randomClouds = [self getRandomNumberBetween:0 to:1];
+        if(randomClouds == 1){
+            int whichCloud = [self getRandomNumberBetween:0 to:3];
+            SKSpriteNode *cloud = [SKSpriteNode spriteNodeWithTexture:[_cloudsTextures objectAtIndex:whichCloud]];
+            int randomYAxix = [self getRandomNumberBetween:0 to:screenRect.size.height];
+            cloud.position = CGPointMake(screenRect.size.height+cloud.size.height/2, randomYAxix);
+            cloud.zPosition = 110;
+            int randomTimeCloud = [self getRandomNumberBetween:9 to:19];
+            SKAction *move =[SKAction moveTo:CGPointMake(0-cloud.size.height, randomYAxix) duration:randomTimeCloud];
+            SKAction *remove = [SKAction removeFromParent];
+            [cloud runAction:[SKAction sequence:@[move,remove]]];
+            [self addChild:cloud];
+        }
     }
 }
 -(int)getRandomNumberBetween:(int)from to:(int)to {
@@ -140,19 +185,19 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     
-//    for (UITouch *touch in touches) {
-//        CGPoint location = [touch locationInNode:self];
-//        
-//        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-//        
-//        sprite.position = location;
-//        
-//        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-//        
-//        [sprite runAction:[SKAction repeatActionForever:action]];
-//        
-//        [self addChild:sprite];
-//    }
+    //    for (UITouch *touch in touches) {
+    //        CGPoint location = [touch locationInNode:self];
+    //
+    //        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
+    //
+    //        sprite.position = location;
+    //
+    //        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
+    //
+    //        [sprite runAction:[SKAction repeatActionForever:action]];
+    //
+    //        [self addChild:sprite];
+    //    }
     
     /* Called when a touch begins */
     CGPoint location = [_plane position];
@@ -164,8 +209,18 @@
     SKAction *action = [SKAction moveToY:self.frame.size.height+bullet.size.height duration:2];
     SKAction *remove = [SKAction removeFromParent];
     [bullet runAction:[SKAction sequence:@[action,remove]]];
+    
+    
+    bullet.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:bullet.size];
+    bullet.physicsBody.dynamic = NO;
+    bullet.physicsBody.categoryBitMask = bulletCategory;
+    bullet.physicsBody.contactTestBitMask = enemyCategory;
+    bullet.physicsBody.collisionBitMask = 0;
+    
     [self addChild:bullet];
-
+    
+    
+    
 }
 
 -(void)update:(NSTimeInterval)currentTime{
@@ -219,6 +274,41 @@
     //_smokeTrail.position = CGPointMake(newX,newY-(_plane.size.height/2));
     _smokeTrail.position = CGPointMake(newX,newY-(_plane.size.height/2));
     
+}
+
+-(void)didBeginContact:(SKPhysicsContact *)contact{
+    SKPhysicsBody *firstBody;
+    SKPhysicsBody *secondBody;
+    if (contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask)
+    {
+        firstBody = contact.bodyA;
+        secondBody = contact.bodyB;
+    }
+    else
+    {
+        firstBody = contact.bodyB;
+        secondBody = contact.bodyA;
+    }
+    if ((firstBody.categoryBitMask & bulletCategory) != 0)
+    {
+        SKNode *projectile = (contact.bodyA.categoryBitMask & bulletCategory) ? contact.bodyA.node : contact.bodyB.node;
+        SKNode *enemy = (contact.bodyA.categoryBitMask & bulletCategory) ? contact.bodyB.node : contact.bodyA.node;
+        [projectile runAction:[SKAction removeFromParent]];
+        [enemy runAction:[SKAction removeFromParent]];
+        
+        
+        //add explosion
+        SKSpriteNode *explosion = [SKSpriteNode spriteNodeWithTexture:[_explosionTextures objectAtIndex:0]];
+        explosion.zPosition = 1;
+        explosion.scale = 0.6;
+        explosion.position = contact.bodyA.node.position;
+        [self addChild:explosion];
+        SKAction *explosionAction = [SKAction animateWithTextures:_explosionTextures timePerFrame:0.07];
+        SKAction *remove = [SKAction removeFromParent];
+        [explosion runAction:[SKAction sequence:@[explosionAction,remove]]];
+        
+        
+    }
 }
 
 

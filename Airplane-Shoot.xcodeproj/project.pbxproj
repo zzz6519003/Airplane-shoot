@@ -32,6 +32,8 @@
 		1848EF1A181B78DD0024AF6E /* PLANE PROPELLER 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1848EF13181B78DD0024AF6E /* PLANE PROPELLER 1.png */; };
 		1848EF1B181B78DD0024AF6E /* PLANE PROPELLER 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1848EF14181B78DD0024AF6E /* PLANE PROPELLER 2.png */; };
 		1848EF1E181BBE570024AF6E /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1848EF1D181BBE570024AF6E /* CoreMotion.framework */; };
+		18664B2D181CBC8100AB21EB /* EXPLOSION.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 18664B2C181CBC8100AB21EB /* EXPLOSION.atlas */; };
+		18664B2F181CBE1000AB21EB /* Clouds.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 18664B2E181CBE1000AB21EB /* Clouds.atlas */; };
 		18A5386B181C00FA006DE13A /* trail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 18A53869181C00FA006DE13A /* trail.sks */; };
 		18A5386C181C00FA006DE13A /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A5386A181C00FA006DE13A /* spark.png */; };
 /* End PBXBuildFile section */
@@ -78,6 +80,8 @@
 		1848EF13181B78DD0024AF6E /* PLANE PROPELLER 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLANE PROPELLER 1.png"; sourceTree = "<group>"; };
 		1848EF14181B78DD0024AF6E /* PLANE PROPELLER 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLANE PROPELLER 2.png"; sourceTree = "<group>"; };
 		1848EF1D181BBE570024AF6E /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		18664B2C181CBC8100AB21EB /* EXPLOSION.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = EXPLOSION.atlas; sourceTree = "<group>"; };
+		18664B2E181CBE1000AB21EB /* Clouds.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Clouds.atlas; sourceTree = "<group>"; };
 		18A53869181C00FA006DE13A /* trail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = trail.sks; sourceTree = "<group>"; };
 		18A5386A181C00FA006DE13A /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,6 +165,8 @@
 				18A53869181C00FA006DE13A /* trail.sks */,
 				18A5386A181C00FA006DE13A /* spark.png */,
 				1848EEEF181B779F0024AF6E /* Spaceship.png */,
+				18664B2E181CBE1000AB21EB /* Clouds.atlas */,
+				18664B2C181CBC8100AB21EB /* EXPLOSION.atlas */,
 				1848EEF1181B779F0024AF6E /* Images.xcassets */,
 				1848EEDB181B779E0024AF6E /* Supporting Files */,
 			);
@@ -290,7 +296,9 @@
 				18A5386C181C00FA006DE13A /* spark.png in Resources */,
 				1848EEF2181B779F0024AF6E /* Images.xcassets in Resources */,
 				1848EF15181B78DD0024AF6E /* airPlanesBackground.png in Resources */,
+				18664B2F181CBE1000AB21EB /* Clouds.atlas in Resources */,
 				1848EF17181B78DD0024AF6E /* PLANE 8 N.png in Resources */,
+				18664B2D181CBC8100AB21EB /* EXPLOSION.atlas in Resources */,
 				18A5386B181C00FA006DE13A /* trail.sks in Resources */,
 				1848EF1B181B78DD0024AF6E /* PLANE PROPELLER 2.png in Resources */,
 				1848EEF0181B779F0024AF6E /* Spaceship.png in Resources */,
