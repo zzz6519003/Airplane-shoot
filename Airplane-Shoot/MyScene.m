@@ -164,7 +164,8 @@
         enemy.physicsBody.contactTestBitMask = bulletCategory;
         enemy.physicsBody.collisionBitMask = 0;
         
-        //random Clouds
+        //random
+        Clouds
         int randomClouds = [self getRandomNumberBetween:0 to:1];
         if(randomClouds == 1){
             
@@ -182,7 +183,54 @@
         }
         
     }
-    
+}
+
+- (void)addPowerUps {
+    int GoOrNot = [self getRandomNumberBetween:0 to:1];
+    if (GoOrNot) {
+        SKSpriteNode *powerUp = [SKSpriteNode spriteNodeWithColor:[UIColor yellowColor] size:CGSizeMake(20, 20)];
+        powerUp.position = CGPointMake(screenRect.size.width/2, screenRect.size.height/2);
+        powerUp.zPosition = 1;
+
+        [self addChild:powerUp];
+//        
+//
+//        
+//        CGMutablePathRef cgpath = CGPathCreateMutable();  //
+//        //random values
+//        float xStart = [self getRandomNumberBetween:0+enemy.size.width to:screenRect.size.width-enemy.size.width ];
+//        float xEnd = [self getRandomNumberBetween:0+enemy.size.width to:screenRect.size.width-enemy.size.width ];
+//        
+//        //ControlPoint1
+//        float cp1X = [self getRandomNumberBetween:0+enemy.size.width to:screenRect.size.width-enemy.size.width ];
+//        float cp1Y = [self getRandomNumberBetween:0+enemy.size.width to:screenRect.size.width-enemy.size.height ];
+//
+//        //ControlPoint2
+//        float cp2X = [self getRandomNumberBetween:0+enemy.size.width to:screenRect.size.width-enemy.size.width ];
+//        float cp2Y = [self getRandomNumberBetween:0 to:cp1Y];
+//        
+//        CGPoint s = CGPointMake(xStart, 1024.0);
+//        CGPoint e = CGPointMake(xEnd, -100.0);
+//        CGPoint cp1 = CGPointMake(cp1X, cp1Y);
+//        CGPoint cp2 = CGPointMake(cp2X, cp2Y);
+//        CGPathMoveToPoint(cgpath,NULL, s.x, s.y);
+//        CGPathAddCurveToPoint(cgpath, NULL, cp1.x, cp1.y, cp2.x, cp2.y, e.x, e.y);
+//        
+//        SKAction *planeDestroy = [SKAction followPath:cgpath asOffset:NO orientToPath:YES duration:5];
+//        [self addChild:enemy];
+//        
+//        SKAction *remove = [SKAction removeFromParent];
+//        [enemy runAction:[SKAction sequence:@[planeDestroy,remove]]];
+//        
+//        CGPathRelease(cgpath);
+//        
+//        enemy.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:enemy.size];
+//        enemy.physicsBody.dynamic = YES;
+//        enemy.physicsBody.categoryBitMask = enemyCategory;
+//        enemy.physicsBody.contactTestBitMask = bulletCategory;
+//        enemy.physicsBody.collisionBitMask = 0;
+
+    }
 }
 
 -(int)getRandomNumberBetween:(int)from to:(int)to {
