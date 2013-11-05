@@ -27,6 +27,9 @@
         _plane.scale = 0.6;
         _plane.zPosition = 2;
         _plane.position = CGPointMake(screenWidth/2, 15+_plane.size.height/2);
+        _plane.physicsBody.categoryBitMask = planeCategory;
+        _plane.physicsBody.contactTestBitMask = bulletCategory;
+        _plane.physicsBody.collisionBitMask = 0;
         [self addChild:_plane];
         
         
@@ -75,7 +78,7 @@
         NSString *smokePath = [[NSBundle mainBundle] pathForResource:@"trail" ofType:@"sks"];
         _smokeTrail = [NSKeyedUnarchiver unarchiveObjectWithFile:smokePath];
         _smokeTrail.position = CGPointMake(screenWidth/2, 15);
-        [self addChild:_smokeTrail];
+//        [self addChild:_smokeTrail];
         
         //schedule enemies
         SKAction *wait = [SKAction waitForDuration:1];
@@ -192,8 +195,11 @@
     if (1) {
         SKSpriteNode *powerUp = [SKSpriteNode spriteNodeWithColor:[UIColor yellowColor] size:CGSizeMake(20, 20)];
         powerUp.position = CGPointMake(screenRect.size.width/2, screenRect.size.height/2);
-        powerUp.zPosition = 1;
+        powerUp.zPosition = 2;
 
+        powerUp.physicsBody.categoryBitMask = powerUpCategory;
+        powerUp.physicsBody.contactTestBitMask = planeCategory;
+        powerUp.physicsBody.collisionBitMask = 0;
         [self addChild:powerUp];
         
 
@@ -321,7 +327,7 @@
     bullet.scale = 0.8;
     
     bullet.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:bullet.size];
-    bullet.physicsBody.dynamic = NO;
+    bullet.physicsBody.dynamic = YES;
     bullet.physicsBody.categoryBitMask = bulletCategory;
     bullet.physicsBody.contactTestBitMask = enemyCategory;
     bullet.physicsBody.collisionBitMask = 0;
@@ -371,8 +377,8 @@
         [explosion runAction:[SKAction sequence:@[explosionAction,remove]]];
         
     }
-    if (((firstBody.categoryBitMask & powerUpCategory) != 0) && (secondBody.categoryBitMask & )) {
-        
+    if (((firstBody.categoryBitMask & planeCategory) != 0) && (secondBody.categoryBitMask & powerUpCategory)) {
+        NSLog(@"ss");
     }
     
 }
