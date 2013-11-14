@@ -27,8 +27,9 @@
         _plane.scale = 0.6;
         _plane.zPosition = 2;
         _plane.position = CGPointMake(screenWidth/2, 15+_plane.size.height/2);
+        _plane.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_plane.size];
         _plane.physicsBody.categoryBitMask = planeCategory;
-        _plane.physicsBody.contactTestBitMask = bulletCategory;
+        _plane.physicsBody.contactTestBitMask = powerUpCategory;
         _plane.physicsBody.collisionBitMask = 0;
         [self addChild:_plane];
         
@@ -195,8 +196,9 @@
     if (1) {
         SKSpriteNode *powerUp = [SKSpriteNode spriteNodeWithColor:[UIColor yellowColor] size:CGSizeMake(20, 20)];
         powerUp.position = CGPointMake(screenRect.size.width/2, screenRect.size.height/2);
-        powerUp.zPosition = 2;
+        powerUp.zPosition = _plane.zPosition;
 
+        powerUp.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:powerUp.size];
         powerUp.physicsBody.categoryBitMask = powerUpCategory;
         powerUp.physicsBody.contactTestBitMask = planeCategory;
         powerUp.physicsBody.collisionBitMask = 0;
